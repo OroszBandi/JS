@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Javascript gyakorlatok</title>
+<h1 id="header1" style="background-color:rgba(0,233,253,1.00)" >Javasript gyakorlatok</h1>
+
+<script>
+function check(){
+var a = document.getElementById('firstNum').value;
+var b = document.getElementById('secNum').value;
+	if(isFinite(a)){
+		if(Math.floor(a)==a && Math.floor(b)==b){
+			if(a%2==0 && b%2==0){
+				alert("mindkét szám páros");
+				}if(a%2==0 && b%2!=0){
+					alert("az első szám páros a második páratlan");
+					}
+					if(a%2!=0 && b%2==0){
+					alert("az első szám páratlan, a második szám páros");
+					}
+					else{
+					alert("mindkét szám páratlan");
+					}
+		}else{
+			alert("csak egész számokkal működik");
+			}	
+	}else{
+	alert("nem számot adtál meg");
+	}
+}
+function osszead(){
+	var a = parseFloat(document.getElementById('firstNum').value);
+	var b = parseFloat(document.getElementById('secNum').value);
+
+	alert(a+b);
+	}
+/*function hasonlit(){
+	var a = (document.getElementById('firstNum').value);
+	var b = (document.getElementById('secNum').value);
+
+	if (a>b) {
+	alert("a nagyobb szám az első, értéke: " + a);
+		}
+		else if (a<b ){
+		alert("a nagyobb szám a második, értéke: " + b);
+		}
+		else{
+		alert("a két szám egyenlő, értékük: " + a "és" +b);
+		}
+}*/
+function kiiros(){
+	var a = (document.getElementById('firstNum').value);
+	var b = (document.getElementById('secNum').value);
+
+	alert("az első számnak mefelelő mennyiségszer írjuk ki a másodikat");
+	for( var i=0;i<a;i++){
+		
+		alert("megtett körök:" + (i+1) + " "+ b);
+	}
+}
+</script>
+</head>
+
+<body>
+
+Az első szám: <input type="int" id="firstNum" 
+name="Az első szám" value="1">
+Az második szám: <input type="int" id="secNum" 
+name="Az első szám" value="5">
+<br />
+
+<button type="button" class="gomb" onClick="check()">Pároszám ellenőrzés</button>
+<button type="button" class="gomb" onClick="osszead()">összeadás</button>
+<button type="button" class="gomb" onClick="hasonlit()">hasonlítás</button>
+<button type="button" class="gomb" onClick="kiiros()">for ciklusos kiírás</button>
+</body>
+</html>
