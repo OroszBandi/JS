@@ -6,58 +6,74 @@
 <h1 id="header1" style="background-color:rgba(0,233,253,1.00)" >Javasript gyakorlatok</h1>
 
 <script>
-function check(){
-var a = document.getElementById('firstNum').value;
-var b = document.getElementById('secNum').value;
-	if(isFinite(a)){
-		if(Math.floor(a)==a && Math.floor(b)==b){
-			if(a%2==0 && b%2==0){
+function isItPair(){
+var a = document.getElementById('firstNum').value; //put the value of the first box to the a variable 
+var b = document.getElementById('secNum').value; //put the value of the first box to the b variable
+	if(isFinite(a && b)){ //verifies if the values are numbers
+		if(Math.floor(a)==a && Math.floor(b)==b){ //verifies if they are integers
+				if(a%2==0 && b%2==0){ //if we divide them by 2 and have 0 as results the both of them are pair
 				alert("mindkét szám páros");
-				}if(a%2==0 && b%2!=0){
+				}
+					else if(a%2==0 && b%2!=0){ //same as before but if the firs is 0 the second is not then the firs is pair the second is inpair
 					alert("az első szám páros a második páratlan");
 					}
-					if(a%2!=0 && b%2==0){
-					alert("az első szám páratlan, a második szám páros");
-					}
-					else{
-					alert("mindkét szám páratlan");
-					}
-		}else{
+						else if(a%2!=0 && b%2==0){ //same thing vice versa
+						alert("az első szám páratlan, a második szám páros");
+						}
+							else if(a%2!=0 && b%2!=0){ //finaly if both of them are inpairs
+							alert("mindkét szám páratlan");
+							}
+		}	else{//send a message if at least one of them arent integer
 			alert("csak egész számokkal működik");
 			}	
-	}else{
+	}else{//send a message if the input is not a number
 	alert("nem számot adtál meg");
 	}
 }
-function osszead(){
+function addTwoNumbers(){ //adding the two numbers together
+
+	var a = parseFloat(document.getElementById('firstNum').value);	// get the value of the first field and transform it to a float number(not integer)
+	var b = parseFloat(document.getElementById('secNum').value); // same thing with the second inputbox
+
+	alert(a+b);//display the result
+	}
+function check(){ // verifies witch one is the bigger 
 	var a = parseFloat(document.getElementById('firstNum').value);
 	var b = parseFloat(document.getElementById('secNum').value);
 
-	alert(a+b);
-	}
-/*function hasonlit(){
-	var a = (document.getElementById('firstNum').value);
-	var b = (document.getElementById('secNum').value);
-
-	if (a>b) {
+	if (a>b) {     //with an if case werifies if the firs number is bigger, if so display it
 	alert("a nagyobb szám az első, értéke: " + a);
 		}
-		else if (a<b ){
+		else if (a<b ){ //if the second  number is bigger 
 		alert("a nagyobb szám a második, értéke: " + b);
 		}
-		else{
-		alert("a két szám egyenlő, értékük: " + a "és" +b);
+		else{// last case if they are equals
+		alert("a két szám egyenlő, értékük: " + a + "és" +b);
 		}
-}*/
-function kiiros(){
-	var a = (document.getElementById('firstNum').value);
-	var b = (document.getElementById('secNum').value);
+}
+function forCyle(){
+	var a = parseInt(document.getElementById('firstNum').value);// with parseInt it transforms the number to an integer  
+	var b = parseInt(document.getElementById('secNum').value);
 
 	alert("az első számnak mefelelő mennyiségszer írjuk ki a másodikat");
-	for( var i=0;i<a;i++){
+	for( var i=0;i<a;i++){ //standard for cyle in every turn it ncrements the value of i till it reaches the goal
 		
 		alert("megtett körök:" + (i+1) + " "+ b);
 	}
+}
+function colorChanger(){
+	//searches the element by its ID then changes its style
+	document.getElementById('header1').style.backgroundColor='red';
+	}
+function recursion(){
+	var a = parseInt(document.getElementById('firstNum').value); //creates a variable  from the value of the first box force it to be an integer(cuts down the part after the point)
+	var countdown = function(a) { //declaration of a function called countdown
+    if (a > 0) {
+        console.log(a); // writes to the console the numbers 
+        countdown(a - 1); // decrements the value of a with 1
+    }
+};
+countdown(a); //calling function countdown with 
 }
 </script>
 </head>
@@ -65,14 +81,16 @@ function kiiros(){
 <body>
 
 Az első szám: <input type="int" id="firstNum" 
-name="Az első szám" value="1">
+name="Az első szám" value="4">
 Az második szám: <input type="int" id="secNum" 
 name="Az első szám" value="5">
 <br />
 
-<button type="button" class="gomb" onClick="check()">Pároszám ellenőrzés</button>
-<button type="button" class="gomb" onClick="osszead()">összeadás</button>
-<button type="button" class="gomb" onClick="hasonlit()">hasonlítás</button>
-<button type="button" class="gomb" onClick="kiiros()">for ciklusos kiírás</button>
+<button type="button" class="gomb" onClick="isItPair()">Pároszám ellenőrzés</button>
+<button type="button" class="gomb" onClick="addTwoNumbers()">összeadás</button>
+<button type="button" class="gomb" onClick="check()">melyik a nagyobb szám</button>
+<button type="button" class="gomb" onClick="forCyle()">for ciklusos kiírás</button>
+<button type="button" class="gomb" onClick="colorChanger()">fejléc színének megváltoztatása</button>
+<button type="button" class="gomb" onClick="recursion()">rekurzív visszaszámlálás</button>
 </body>
 </html>
